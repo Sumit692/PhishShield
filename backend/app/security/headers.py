@@ -15,8 +15,8 @@ def apply_security_headers(response: Response) -> Response:
     # Referrer policy
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     
-    # Restrict device APIs
-    response.headers["Permissions-Policy"] = "geolocation=(), camera=(), microphone=(), payment=()"
+    # Restrict device APIs (allow camera for client-side QR scanner)
+    response.headers["Permissions-Policy"] = "geolocation=(), camera=(self), microphone=(), payment=()"
     
     # Content Security Policy (allows local Vite frontend and self assets)
     csp_directives = [
@@ -24,8 +24,8 @@ def apply_security_headers(response: Response) -> Response:
         "script-src 'self' 'unsafe-inline'",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "font-src 'self' https://fonts.gstatic.com data:",
-        "img-src 'self' data: https:",
-        "connect-src 'self' http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:*",
+        "img-src 'self' data: https: blob:",
+        "connect-src 'self' https: http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:*",
         "frame-ancestors 'none'",
         "object-src 'none'",
         "base-uri 'self'"

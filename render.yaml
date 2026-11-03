@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: phishshield
+    runtime: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true

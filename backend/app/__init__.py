@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, send_from_directory
 from app.config import Config
 from app.extensions import db, login_manager, cors
 from app.security.headers import apply_security_headers
@@ -25,6 +25,17 @@ def create_app(config_class=Config):
     app.register_blueprint(analyze_bp)
     app.register_blueprint(history_bp)
     app.register_blueprint(admin_bp)
+
+    # Locate frontend dist directory (for production single-service hosting)
+    dist_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+
+    if os.path.exists(dist_dir):
+        @app.route("/", defaults={"path": ""})
+        @app.route("/<path:path>")
+        def serve_frontend(path):
+            if path and os.path.exists(os.path.join(dist_dir, path)):
+                return send_from_directory(dist_dir, path)
+            return send_from_directory(dist_dir, "index.html")
 
     # Register security headers
     app.after_request(apply_security_headers)
@@ -53,6 +64,9 @@ def create_app(config_class=Config):
 
     @app.errorhandler(404)
     def not_found(e):
+        if not request.path.startswith("/api/"):
+            if os.path.exists(dist_dir):
+                return send_from_directory(dist_dir, "index.html")
         return jsonify({
             "error": "Not Found",
             "message": "The requested API resource was not found."
