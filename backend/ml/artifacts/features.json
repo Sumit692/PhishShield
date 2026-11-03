@@ -1,0 +1,30 @@
+{
+  "features": [
+    "url_length",
+    "hostname_length",
+    "path_length",
+    "query_length",
+    "num_dots_host",
+    "num_dots_path",
+    "num_hyphens_host",
+    "num_hyphens_path",
+    "num_digits_host",
+    "num_digits_path",
+    "digit_ratio",
+    "num_slashes",
+    "num_subdomains",
+    "num_at_symbols",
+    "num_percent_signs",
+    "num_equal_signs",
+    "is_ip_address",
+    "has_punycode",
+    "has_non_standard_port",
+    "has_suspicious_keywords",
+    "keyword_count",
+    "has_brand_in_subdomain",
+    "host_entropy",
+    "url_entropy",
+    "tld_in_path",
+    "has_double_slash_in_path"
+  ]
+}

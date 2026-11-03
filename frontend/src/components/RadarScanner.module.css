@@ -1,0 +1,144 @@
+.scannerWrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  margin-top: var(--space-6);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.radarDisplay {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27, 67, 50, 0.2) 0%, rgba(20, 53, 38, 0.4) 100%);
+  border: 2px solid #52b788;
+  box-shadow: 0 0 20px rgba(82, 183, 136, 0.25), inset 0 0 20px rgba(82, 183, 136, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .radarDisplay {
+  background: radial-gradient(circle, rgba(16, 45, 33, 0.4) 0%, rgba(5, 18, 12, 0.8) 100%);
+  border-color: #74c69d;
+}
+
+.radarCrosshairH {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(82, 183, 136, 0.3);
+}
+
+.radarCrosshairV {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(82, 183, 136, 0.3);
+}
+
+.radarRing1 {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px dashed rgba(82, 183, 136, 0.4);
+}
+
+.radarRing2 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid rgba(82, 183, 136, 0.5);
+}
+
+.radarSweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(82, 183, 136, 0.4) 0deg, transparent 60deg, transparent 360deg);
+  animation: sweep 1.8s linear infinite;
+}
+
+@keyframes sweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.radarBlip {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #52b788;
+  box-shadow: 0 0 8px #52b788;
+  top: 35px;
+  left: 85px;
+  animation: blipPulse 1.8s infinite;
+}
+
+@keyframes blipPulse {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.4); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+.stepsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 420px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-subtle);
+  font-size: var(--text-xs);
+  transition: all 0.3s;
+}
+
+.stepLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.stepStatus {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.statusActive {
+  color: #52b788;
+}
+
+.statusDone {
+  color: #10b981;
+}
+
+.statusPending {
+  color: var(--text-muted);
+}

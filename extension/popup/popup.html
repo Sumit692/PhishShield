@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishShield</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">PhishShield</div>
+          <div class="brand-subtitle">Real-Time Threat Radar</div>
+        </div>
+      </div>
+      <label class="switch" title="Toggle Real-Time Shield">
+        <input type="checkbox" id="shield-toggle" checked>
+        <span class="slider"></span>
+      </label>
+    </header>
+
+    <div class="url-card">
+      <div class="url-label">Active Site</div>
+      <div id="tab-url" class="url-value">Checking current tab...</div>
+    </div>
+
+    <div id="loading-state" class="state-box">
+      <div class="spinner"></div>
+      <div style="font-size:12px;color:#666;margin-top:8px;">Evaluating link with Random Forest ML...</div>
+    </div>
+
+    <div id="result-state" class="result-box" style="display:none;">
+      <div class="score-row">
+        <div class="gauge-wrapper">
+          <svg viewBox="0 0 100 60" class="gauge-svg">
+            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round" />
+            <path id="gauge-fill" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#10B981" stroke-width="8" stroke-linecap="round" stroke-dasharray="125.6" stroke-dashoffset="125.6" />
+          </svg>
+          <div id="score-text" class="score-number">0</div>
+        </div>
+        <div class="verdict-info">
+          <div id="risk-badge" class="badge badge-low">SAFE</div>
+          <div id="model-conf" class="conf-text">92% ML Confidence</div>
+        </div>
+      </div>
+
+      <div id="signals-box" class="signals-section">
+        <div class="signals-title">Security Signals</div>
+        <div id="signals-list" class="signals-list"></div>
+      </div>
+
+      <button id="deep-scan-btn" class="action-btn">
+        Open Full Inspection in App ↗
+      </button>
+    </div>
+
+    <div id="unsupported-state" class="state-box" style="display:none;">
+      <div style="font-size:13px;font-weight:600;color:#333;">Protected Browser Page</div>
+      <div style="font-size:11px;color:#777;margin-top:4px;">
+        Internal browser URLs (chrome://) cannot be inspected. Navigate to an external website to scan.
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

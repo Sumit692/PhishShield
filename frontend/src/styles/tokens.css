@@ -1,0 +1,170 @@
+:root {
+  /* Arc UI Core Semantic Tokens - Tuned for PhishShield's Forest Green & Warm Canvas */
+  --background: #F9F9F6;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --surface-muted: #F2F3EF;
+  --foreground: #191E24;
+  --text-secondary: #47515B;
+  --text-muted: #6E7985;
+  --text-inverse: #FFFFFF;
+
+  --border: #E2E5DC;
+  --border-subtle: #EAECE6;
+  --border-strong: #CBD0C4;
+
+  /* Primary Brand Action: Restrained Forest Green */
+  --accent: #1B4332;
+  --accent-strong: #143526;
+  --accent-subtle: rgba(27, 67, 50, 0.08);
+  --accent-foreground: #FFFFFF;
+  --control-on: #1B4332;
+  --control-glyph: #FFFFFF;
+
+  /* Security Status Colors (Strict semantic meaning) */
+  --success: #1B4332;
+  --warning: #92400E;
+  --danger: #991B1B;
+
+  /* PhishShield Specific Aliases */
+  --bg-canvas: var(--background);
+  --bg-surface: var(--surface);
+  --bg-surface-elevated: var(--surface-raised);
+  --bg-subtle: var(--surface-muted);
+  --bg-hover: #ECEEE8;
+
+  --text-primary: var(--foreground);
+
+  --brand-primary: var(--accent);
+  --brand-hover: #2D6A4F;
+  --brand-active: var(--accent-strong);
+  --brand-light: rgba(27, 67, 50, 0.06);
+  --brand-border: #95D5B2;
+
+  --status-low: var(--success);
+  --status-low-bg: #EAF7EE;
+  --status-low-border: #B7E4C7;
+
+  --status-mod: var(--warning);
+  --status-mod-bg: #FEF3C7;
+  --status-mod-border: #FCD34D;
+
+  --status-high: var(--danger);
+  --status-high-bg: #FEE2E2;
+  --status-high-border: #FCA5A5;
+
+  --status-info: #1E3A8A;
+  --status-info-bg: #DBEAFE;
+  --status-info-border: #BFDBFE;
+
+  --border-color: var(--border);
+
+  /* Typography Scale */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+
+  /* Spacing Grid (4px multiples) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Concentric Corner Radii */
+  --radius-control: 10px;
+  --radius-panel: 16px;
+  --radius-surface: 20px;
+  --radius-pill: 9999px;
+
+  --radius-sm: 6px;
+  --radius-md: var(--radius-control);
+  --radius-lg: var(--radius-panel);
+  --radius-xl: var(--radius-surface);
+  --radius-full: 9999px;
+
+  /* Shadows (Restrained, only for floating layers) */
+  --shadow-sm: 0 1px 3px rgba(25, 30, 36, 0.04), 0 1px 2px rgba(25, 30, 36, 0.02);
+  --shadow-md: 0 4px 12px rgba(25, 30, 36, 0.06), 0 1px 3px rgba(25, 30, 36, 0.03);
+  --shadow-lg: 0 8px 24px rgba(25, 30, 36, 0.08);
+
+  --focus-ring: 0 0 0 3px rgba(27, 67, 50, 0.2);
+}
+
+:root[data-theme="dark"] {
+  --background: oklch(19% 0 0);
+  --surface: oklch(21.5% 0 0);
+  --surface-raised: oklch(24% 0 0);
+  --surface-muted: oklch(26% 0 0);
+  --foreground: oklch(96% 0 0);
+  --text-secondary: oklch(77% 0 0);
+  --text-muted: oklch(64% 0 0);
+  --text-inverse: oklch(19% 0 0);
+
+  --border: oklch(29% 0 0);
+  --border-subtle: oklch(25% 0 0);
+  --border-strong: oklch(40% 0 0);
+
+  --accent: #53dca6;
+  --accent-strong: #93efd0;
+  --accent-subtle: rgba(83, 220, 166, 0.15);
+  --accent-foreground: #092015;
+
+  --success: #53dca6;
+  --warning: #ffcb62;
+  --danger: #ff9386;
+
+  --bg-canvas: var(--background);
+  --bg-surface: var(--surface);
+  --bg-surface-elevated: var(--surface-raised);
+  --bg-subtle: var(--surface-muted);
+  --bg-hover: oklch(28% 0 0);
+
+  --text-primary: var(--foreground);
+  --border-color: var(--border);
+
+  --brand-primary: var(--accent);
+  --brand-hover: #45b88b;
+  --brand-active: #3ca27a;
+  --brand-light: rgba(83, 220, 166, 0.12);
+  --brand-border: #235d46;
+
+  --status-low: var(--success);
+  --status-low-bg: rgba(83, 220, 166, 0.14);
+  --status-low-border: rgba(83, 220, 166, 0.3);
+
+  --status-mod: var(--warning);
+  --status-mod-bg: rgba(255, 203, 98, 0.14);
+  --status-mod-border: rgba(255, 203, 98, 0.3);
+
+  --status-high: var(--danger);
+  --status-high-bg: rgba(255, 147, 134, 0.14);
+  --status-high-border: rgba(255, 147, 134, 0.3);
+
+  --status-info: #6ba3ff;
+  --status-info-bg: rgba(107, 163, 255, 0.14);
+  --status-info-border: rgba(107, 163, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

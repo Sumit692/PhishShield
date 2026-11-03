@@ -1,0 +1,53 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 3px 10px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.low {
+  background-color: var(--status-low-bg);
+  color: var(--status-low);
+  border: 1px solid var(--status-low-border);
+}
+.low .dot {
+  background-color: var(--status-low);
+}
+
+.moderate {
+  background-color: var(--status-mod-bg);
+  color: var(--status-mod);
+  border: 1px solid var(--status-mod-border);
+}
+.moderate .dot {
+  background-color: var(--status-mod);
+}
+
+.high {
+  background-color: var(--status-high-bg);
+  color: var(--status-high);
+  border: 1px solid var(--status-high-border);
+}
+.high .dot {
+  background-color: var(--status-high);
+}
+
+.info {
+  background-color: var(--status-info-bg);
+  color: var(--status-info);
+  border: 1px solid var(--status-info-border);
+}
+.info .dot {
+  background-color: var(--status-info);
+}

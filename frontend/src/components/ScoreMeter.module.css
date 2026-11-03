@@ -1,0 +1,103 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.scoreHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.scoreValueWrap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.scoreNumber {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.scoreMax {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.meterTrack {
+  position: relative;
+  height: 12px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  display: flex;
+}
+
+.segmentLow {
+  width: 30%;
+  background-color: #B7E4C7;
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.segmentMod {
+  width: 30%;
+  background-color: #FDE68A;
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.segmentHigh {
+  width: 40%;
+  background-color: #FCA5A5;
+}
+
+.marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  transition: left var(--transition-normal);
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legendDotLow {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--status-low);
+}
+
+.legendDotMod {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--status-mod);
+}
+
+.legendDotHigh {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--status-high);
+}

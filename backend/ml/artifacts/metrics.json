@@ -1,0 +1,93 @@
+{
+  "model_version": "3.0.0-rf-malicious-urls",
+  "algorithm": "RandomForestClassifier(n_estimators=100, max_depth=16, class_weight='balanced')",
+  "dataset_source": "Kaggle (sid321axn/malicious-urls-dataset) \u2014 651,191 raw records",
+  "dataset_attribution": "Kaggle: Malicious URLs Dataset by Sid (sid321axn/malicious-urls-dataset)",
+  "cleaning_statistics": {
+    "raw_records": 651191,
+    "empty_or_short_dropped": 3,
+    "exact_duplicates_dropped": 10066,
+    "conflicting_duplicates_dropped": 12,
+    "clean_records": 640197,
+    "clean_class_distribution": {
+      "benign (0)": 427794,
+      "malicious (1)": 212403
+    }
+  },
+  "training_sample_summary": {
+    "total_samples": 70000,
+    "train_samples": 56000,
+    "test_samples": 14000,
+    "class_distribution": {
+      "legitimate (0)": 35000,
+      "malicious (1)": 35000
+    }
+  },
+  "stratified_evaluation": {
+    "random_forest": {
+      "accuracy": 0.8284,
+      "precision": 0.8257,
+      "recall": 0.8324,
+      "f1_score": 0.8291,
+      "roc_auc": 0.9101,
+      "confusion_matrix": {
+        "true_negatives": 5770,
+        "false_positives": 1230,
+        "false_negatives": 1173,
+        "true_positives": 5827
+      }
+    },
+    "logistic_regression": {
+      "accuracy": 0.7891,
+      "f1_score": 0.7619,
+      "roc_auc": 0.8536
+    }
+  },
+  "domain_grouped_evaluation": {
+    "note": "Evaluated on unseen domains (GroupShuffleSplit on registered domain) to measure true generalization without domain leakage.",
+    "random_forest": {
+      "accuracy": 0.7704,
+      "precision": 0.7641,
+      "recall": 0.7762,
+      "f1_score": 0.7701,
+      "roc_auc": 0.8532,
+      "confusion_matrix": {
+        "true_negatives": 5510,
+        "false_positives": 1696,
+        "false_negatives": 1584,
+        "true_positives": 5494
+      }
+    },
+    "logistic_regression": {
+      "accuracy": 0.7956,
+      "f1_score": 0.771
+    }
+  },
+  "top_features": {
+    "path_length": 0.144,
+    "num_dots_path": 0.1302,
+    "url_length": 0.0775,
+    "num_slashes": 0.0766,
+    "url_entropy": 0.0723,
+    "digit_ratio": 0.068,
+    "host_entropy": 0.0674,
+    "num_equal_signs": 0.0536,
+    "hostname_length": 0.0527,
+    "num_digits_path": 0.0441
+  },
+  "root_cause_analysis": {
+    "historical_issue": "Legitimate sites (Google, GitHub, whitehouse.gov) previously received elevated risk scores.",
+    "investigation_findings": [
+      "Dataset selection bias: Raw scraped benign datasets had 99.9% deep paths and 0% root homepages, while phishing feeds had bare domains. Tree splits treated path_length=0 as 100% malicious.",
+      "Protocol artifact: In raw dataset, benign URLs lacked scheme while malware included https://. Training on is_https penalized legitimate URLs normalized with https://.",
+      "Subdomain artifact: Leading 'www.' was previously counted as an untrusted subdomain and extra dot, heavily penalizing standard domains.",
+      "Uncalibrated risk mapping: Raw uncalibrated tree probabilities were previously copied directly into risk scores."
+    ],
+    "pipeline_resolutions": [
+      "Cleaned dataset: Removed 10k exact duplicates, 6 conflicting label URLs, and invalid rows.",
+      "Balanced domain representation: Added benign root domain representations to eliminate path-length shortcut.",
+      "Normalized feature extraction: Stripped 'www.' and scheme prefix; extracted separate host vs path features.",
+      "Decoupled confidence and risk score: Model confidence now represents statistical class probability certainty, while 0-100 risk score reflects calibrated threat index with deterministic heuristic safeguards."
+    ]
+  }
+}
