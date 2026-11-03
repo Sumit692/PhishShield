@@ -289,18 +289,13 @@ npm run dev
 
 ## 🚀 Live Cloud Deployment
 
-PhishShield is production-ready and can be deployed with 1 click to free cloud platforms:
-
-### Deploy to Render (Recommended)
+### Deploy to Vercel
 
 1. Fork or open your repository: [Sumit692/PhishShield](https://github.com/Sumit692/PhishShield)
-2. Go to [Render Dashboard](https://dashboard.render.com/) and click **New +** -> **Web Service**.
-3. Connect your GitHub repository `Sumit692/PhishShield`.
-4. Render will auto-detect the `Dockerfile` (or select **Docker** environment).
-5. Choose the **Free** instance plan.
-6. Click **Deploy Web Service**!
-
-Render will build the React frontend and Python ML backend into a single high-performance production container and provide a live public HTTPS URL (e.g. `https://phishshield.onrender.com`).
+2. Go to [Vercel Dashboard](https://vercel.com/) and click **Add New…** -> **Project**.
+3. Import your GitHub repository `Sumit692/PhishShield`.
+4. Vercel automatically detects the preset from `vercel.json` (Vite, `frontend/dist`).
+5. Click **Deploy** to launch your live URL!
 
 ---
 

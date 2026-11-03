@@ -9,7 +9,7 @@ load_dotenv()
 class Config:
     """Base application configuration."""
     SECRET_KEY = os.environ.get("SECRET_KEY") or "phishshield-secret-production-key-seed-982341"
-    ENV = os.environ.get("FLASK_ENV", "production" if os.environ.get("RENDER") or os.environ.get("PORT") else "development")
+    ENV = os.environ.get("FLASK_ENV", "production" if os.environ.get("PORT") else "development")
     DEBUG = os.environ.get("FLASK_DEBUG", "0").lower() in ("1", "true", "yes")
 
     # Database
@@ -27,7 +27,7 @@ class Config:
     SESSION_COOKIE_NAME = "phishshield_session"
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = "Lax"
-    SESSION_COOKIE_SECURE = os.environ.get("FLASK_ENV") == "production" or os.environ.get("RENDER") is not None
+    SESSION_COOKIE_SECURE = os.environ.get("FLASK_ENV") == "production"
     PERMANENT_SESSION_LIFETIME = timedelta(days=7)
 
     # CORS
