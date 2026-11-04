@@ -332,6 +332,6 @@ npx playwright test
 
 ## 👤 Author & License
 
-Developed by **Raj Mishra** ([@RajMishra16](https://github.com/RajMishra16)).
+Developed by **Sumit Kumar Singh** ([@Sumit692](https://github.com/RajMishra16)).
 
 This project is licensed under the **MIT License**.
